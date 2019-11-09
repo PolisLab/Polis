@@ -1,0 +1,8 @@
+#stockBox{
+  align-content:center;
+  background: ghostwhite;
+  width:80%;
+  box-shadow: 10px 15px 39px rgba(0, 0, 0, .2);
+  border-radius: 5px;
+  background-color: blue;
+}
