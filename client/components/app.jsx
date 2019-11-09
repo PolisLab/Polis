@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Header from './header';
 import axios from 'axios';
 import SearchBar from './searchcomp'
+import StockList from '../container/StockList.jsx'
 
 class App extends Component{
   constructor(props){
@@ -50,7 +51,7 @@ class App extends Component{
     
             <Header SignupClick = {this.SignupClick} LoginClick ={this.LoginClick} passwordChangeHandler ={this.passwordChangeHandler} usernameChangeHandler ={this.usernameChangeHandler} enteredUsername = {this.state.enteredUsername} enteredPassword={this.state.enteredPassword}/>
             <SearchBar name={this.state.name} nameChangeHandler={this.nameChangeHandler}/>
-            
+            <StockList name={this.state.name}/>
         </div>
     )
   }
