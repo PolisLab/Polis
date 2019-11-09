@@ -8,7 +8,7 @@ const StockList = (props) => {
   const arrToShow = [];
   for(let i = 0; i < snp500.length ; i++){
     if(snp500[i].indexOf(props.name) !== -1)
-      arrToShow.push(<StockBox stockName={snp500[i]}/>);
+      arrToShow.push(<StockBox key={i} togglePopup ={props.togglePopup} stockName={snp500[i]}/>);
   }
 
   return (
