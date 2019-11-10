@@ -4,7 +4,9 @@ const app = express();
 const PORT = 3000;
 const cookieParser = require('cookie-parser');
 
-app.use(express.static(path.resolve(__dirname, '../static/images')));
+
+app.use('/build', express.static(path.join(__dirname, '../build')));
+// app.use('/client', express.static(path.resolve(__dirname, '../client/')));
 app.use(cookieParser());
 app.use(express.json());
 app.use('/', (req,res) => {

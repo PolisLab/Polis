@@ -3,7 +3,7 @@ import Header from './header';
 import axios from 'axios';
 import SearchBar from './searchcomp'
 import StockList from '../container/StockList.jsx'
-import StockPopUp from './stockpopup'
+import StockPopUp from './StockPopup'
 
 class App extends Component{
   constructor(props){
@@ -47,30 +47,30 @@ class App extends Component{
         event.preventDefault();
         this.setState({name: event.target.value});
     }
-    togglePopup(newname){
-        if(this.state.isPicked == false){
-            this.setState({'isPicked':true,'companyName':newname});
-        }
-        else{
-            this.setState({'isPicked':false});
-        }
+    togglePopup(newname, newSymbol){
+      console.log(newname);
+      if(this.state.isPicked == false){
+        this.setState({'isPicked':true,'companyName':newname, 'companySymbol': newSymbol});
+      }
+      else{
+        this.setState({'isPicked':false});
+      }
     }
     render(){
-        console.log(this.state.name);
-        let stockRender;
-        if(this.state.isPicked){
-            stockRender= (
-                <StockPopUp companyName={this.state.companyName} closePopup ={this.togglePopup}/>
-            )
-        }
+      console.log(this.state.name);
+      let stockRender;
+      if(this.state.isPicked){
+        stockRender= (
+          <StockPopUp symbol ={this.state.companySymbol} companyName={this.state.companyName} closePopup ={this.togglePopup}/>
+        )
+      }
     return(
-        <div>
-    
-            <Header SignupClick = {this.SignupClick} LoginClick ={this.LoginClick} passwordChangeHandler ={this.passwordChangeHandler} usernameChangeHandler ={this.usernameChangeHandler} enteredUsername = {this.state.enteredUsername} enteredPassword={this.state.enteredPassword}/>
-            <SearchBar name={this.state.name} nameChangeHandler={this.nameChangeHandler}/>
-            {stockRender}
-            <StockList name={this.state.name} togglePopup={this.togglePopup}/>
-        </div>
+      <div>
+        <Header SignupClick = {this.SignupClick} LoginClick ={this.LoginClick} passwordChangeHandler ={this.passwordChangeHandler} usernameChangeHandler ={this.usernameChangeHandler} enteredUsername = {this.state.enteredUsername} enteredPassword={this.state.enteredPassword}/>
+        <SearchBar name={this.state.name} nameChangeHandler={this.nameChangeHandler}/>
+        {stockRender}
+        <StockList name={this.state.name} togglePopup={this.togglePopup}/>
+      </div>
     )
   }
 }
