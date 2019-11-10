@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const userRouter = require('./routes/userRouter')
 
 
-
+app.use('/build', express.static(path.join(__dirname, '../build')));
 // app.use(express.static(path.resolve(__dirname, '../static/images')));
 app.use(cookieParser());
 app.use(express.json());

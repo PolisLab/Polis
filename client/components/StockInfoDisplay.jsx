@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 
-const StockBox = (props) => {
+const StockInfoDisplay = (props) => {
   let name;
   let symbol;
   if(props.stockName){
@@ -11,9 +11,10 @@ const StockBox = (props) => {
   }
   return (
     <div className= "stockBox" onClick = {()=> props.togglePopup(name,symbol)}>
+      <button>Favorite</button><button>Buy</button>
       <p>{name}</p>
     </div>
   );
 }
 
-export default StockBox;
+export default StockInfoDisplay;
