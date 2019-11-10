@@ -16,4 +16,11 @@ router.post('/signup',
     (req, res) => res.status(200).json(res.locals.userInfo)
 )
 
+router.post('/login',
+    userController.verifyUser,
+    (req, res) => res.status(200).json(res.locals.userInfo)
+
+)
+
+
 module.exports = router;
