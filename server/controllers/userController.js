@@ -42,6 +42,8 @@ userController.deleteFav = (req, res, next) => {
 
 userController.verifyUser  = (req, res, next) => {
   const {email_address, password} = req.body;
+  console.log('received req body',  req.body);
+  console.log('email' ,email_address)
   // console.log('req.body is', req.body)
   models.User.findOne({email_address}, (err, result) => {
     // console.log(typeof password)
@@ -53,7 +55,7 @@ userController.verifyUser  = (req, res, next) => {
       res.locals.userInfo = {message: 'No Such User'}
       next();
     } else {
-      if (result.password === JSON.stringify(password)) {
+      if (result.password === password) {
         res.locals.userInfo = result
         next();
       }

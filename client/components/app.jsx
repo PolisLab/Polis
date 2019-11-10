@@ -29,18 +29,24 @@ class App extends Component{
         })
     }
     LoginClick(){
-        fetch('/user/login',{
-          method: 'POST', 
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            'email_address': this.state.enteredUsername,
-            'password': this.state.enteredPassword
-          })
+      console.log('entered User name is ' ,this.state.enteredUsername);
+      console.log('entered password is ' ,this.state.enteredPassword);
+      console.log(JSON.stringify({
+        email_address: this.state.enteredUsername,
+        password: this.state.enteredPassword
+      }));
+      fetch('/user/login',{
+        method: 'POST', 
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email_address: this.state.enteredUsername,
+          password: this.state.enteredPassword
         })
-        .then(body => body.json())
-        .then(body => console.log(body));
+      })
+      .then(body => body.json())
+      .then(body => console.log(body));
     }
     passwordChangeHandler(event){
         event.preventDefault();
