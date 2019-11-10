@@ -29,10 +29,18 @@ class App extends Component{
         })
     }
     LoginClick(){
-        axios.get('/user/login',{
-            'username': this.state.enteredUsername,
+        fetch('/user/login',{
+          method: 'POST', 
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            'email_address': this.state.enteredUsername,
             'password': this.state.enteredPassword
+          })
         })
+        .then(body => body.json())
+        .then(body => console.log(body));
     }
     passwordChangeHandler(event){
         event.preventDefault();

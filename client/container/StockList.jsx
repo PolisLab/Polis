@@ -512,7 +512,11 @@ const StockList = (props) => {
   ];
 
   const arrToShow = [];
-  for(let i = 0; i < snp500.length ; i++){
+  let stocksToShow = 40;
+  if(props.name !== ""){
+    stocksToShow = snp500.length;
+  }
+  for(let i = 0; i < stocksToShow; i++){
     if(snp500[i][0].toLowerCase().indexOf(props.name) !== -1)
       arrToShow.push(<StockBox key={i} togglePopup ={props.togglePopup} stockName={snp500[i][0]} stockSymbol={snp500[i][1]}/>);
     else if(snp500[i][1].toLowerCase().indexOf(props.name) !== -1)
