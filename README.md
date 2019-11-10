@@ -1,2 +1,2 @@
 # Polis
-Real time bus geolocation tracker
+Real Time Stock Simulator!
