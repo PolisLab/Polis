@@ -7,7 +7,7 @@ mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   // sets the name of the DB that our collections are part of
-  dbName: 'starwars'
+  dbName: 'stock'
 })
 .then(()=>console.log(`Connected to Sung's Mongo DB`))
 .catch(err=>console.log(err));
@@ -32,6 +32,8 @@ const favStockSchema = new Schema({
     },
     favStockId : String
 })
+
+
 
 const Fav = mongoose.model('favs', favStockSchema);
 

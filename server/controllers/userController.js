@@ -20,8 +20,18 @@ userController.createUser = (req, res, next) => {
     });
 };
 
+// userController.getFavs = (req, res, next) => {
+//     models.Favs
+
+// }
+
+
+
+
+
 userController.addFavs = (req, res, next) => {
-    
+
+
 }
 
 userController.deleteFav = (req, res, next) => {
