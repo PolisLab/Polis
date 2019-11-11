@@ -14,8 +14,12 @@ const StockInfoDisplay = (props) => {
 
 
   return (
-    <div className= "stockBox" >
+    <div id= "stockBuyInfo" >
+      <p>What date do you want to buy?</p>
       <input type="date"></input>
+      <p>Price: </p>
+      <p>How many shares?</p>
+      <input type="text"></input>
       <button>Buy</button>
     </div>
   );
