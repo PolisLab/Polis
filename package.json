@@ -18,9 +18,11 @@
   "dependencies": {
     "cors": "^2.8.5",
     "i": "^0.3.6",
+    "mongoose": "^5.7.9",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "react-redux": "^5.0.6",
+    "react-spinners": "^0.6.1",
     "redux": "^3.7.2"
   },
   "devDependencies": {
