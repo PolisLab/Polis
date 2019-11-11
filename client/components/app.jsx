@@ -6,7 +6,7 @@ import SearchBar from './searchcomp'
 import StockList from '../container/StockList.jsx'
 import StockPopUp from './StockPopup'
 import CanvasJSReact from './canvasjs.react';
-import RenderList from './renderList';
+// import RenderList from './renderList';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -129,7 +129,7 @@ class App extends Component{
         {/* <div id="chartContainer" style={{height: 360 + "px", width: 100 + "%"}}></div> */}
         <Header SignupClick = {this.SignupClick} LoginClick ={this.LoginClick} passwordChangeHandler ={this.passwordChangeHandler} usernameChangeHandler ={this.usernameChangeHandler} enteredUsername = {this.state.enteredUsername} enteredPassword={this.state.enteredPassword}/>
         <SearchBar whichTab ={this.state.whichTab} buysListChangeHandler={this.buysListChangeHandler} stockListChangeHandler ={this.stockListChangeHandler} favsListChangeHandler={this.favsListChangeHandler} name={this.state.name} nameChangeHandler={this.nameChangeHandler}/>
-        {this.state.isPicked ? <StockPopUp userName= {this.state.userInfo.email_address} symbol ={this.state.companySymbol} companyName={this.state.companyName} closePopup ={this.togglePopup}/> : null}
+        {this.state.isPicked ? <StockPopUp id='popUp' userName= {this.state.userInfo.email_address} symbol ={this.state.companySymbol} companyName={this.state.companyName} closePopup ={this.togglePopup}/> : null}
         {content}
       </div>
     )
