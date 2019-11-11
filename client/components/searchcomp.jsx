@@ -1,18 +1,35 @@
 import React, {useState} from 'react'
 
 const SearchBar = (props)=>{
+  let search;
+  if(props.whichTab == '1'){
+     search=( <form >
+    
 
+
+      <label>Search Companies</label>
+
+      <input type="text" value={props.name} onChange={props.nameChangeHandler} required></input>
+      </form>);
+  }
+  else{
+      search =( <div onClick ={()=>props.stockListChangeHandler()}>
+        Search Company
+      </div>)
+    
+  }
   return (
-    <form >
+    
+    <div>
+      {search}
+      <div onClick = {()=>props.buysListChangeHandler()}>
+        Buys
+      </div>
+      <div onClick ={()=>props.favsListChangeHandler()}>
+        Favorites
+      </div>
+    </div>
 
-
-
-    <label>Search Company</label>
-
-    <input type="text" value={props.name} onChange={props.nameChangeHandler} required></input>
-
-
-</form>
   )
 }
 export default SearchBar;

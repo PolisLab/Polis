@@ -35,10 +35,8 @@ app.use((err, req, res, next) => {
   return res.status(400).json('Global Error')
 })
 
-
-
 app.listen(PORT, () => {
-    console.log(`Server listening on port: ${PORT}`);
-  });
-  
-  module.exports = app;
+  console.log(`Server listening on port: ${PORT}`);
+});
+
+module.exports = app;
