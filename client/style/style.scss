@@ -33,5 +33,9 @@
   bottom: 20%;  
   margin: auto;  
   border-radius: 20px;  
-  background: white;  
+  background: #9BBFCE;
+  background: #4EB4CE;
+  background: -moz-radial-gradient(center, #4EB4CE 0%, #2763C5 100%);
+  background: -webkit-radial-gradient(center, #4EB4CE 0%, #2763C5 100%);
+  background: radial-gradient(ellipse at center, #4EB4CE 0%, #2763C5 100%);
 }

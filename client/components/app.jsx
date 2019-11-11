@@ -103,20 +103,20 @@ class App extends Component{
         console.log(this.state.whichTab);
         let content;
         if(this.state.whichTab == '1'){
-        content =(<StockList whichTab={this.state.whichTab} name={this.state.name} togglePopup={this.togglePopup}/></div>)
+        content =(<StockList whichTab={this.state.whichTab} name={this.state.name} togglePopup={this.togglePopup}/>)
         }
         else if(this.state.whichTab =='2'){
             content = (<div>
               favorites
               <StockList whichTab={this.state.whichTab} name={this.state.name} togglePopup={this.togglePopup}/></div>
-            </div>)
+            )
         }
         else if(this.state.whichTab == '3'){
           content =(
             <div>
                 buys
                 <StockList whichTab={this.state.whichTab} name={this.state.name} togglePopup={this.togglePopup}/></div>
-            </div>)
+            )
         }
 
 
