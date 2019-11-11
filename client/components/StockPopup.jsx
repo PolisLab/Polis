@@ -51,8 +51,8 @@ const StockPopup = props => {
         </div> : 
         <div>
           <p>{props.companyName},{props.symbol} Today's Price {price}!<button onClick={handleFav}>Favorite</button></p>
-          <StockGraphDisplay/>
-          <StockInfoDisplay data={stockData} stockName={props.companyName} stockSymbol={props.symbol}/>
+          <StockGraphDisplay data={stockData}/>
+          <StockInfoDisplay userName={props.userName} stockName={props.companyName} stockSymbol={props.symbol}/>
           <span className= "closeButton" onClick={handleSave}>X</span>
         </div>}
       </div>  
