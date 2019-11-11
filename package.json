@@ -21,9 +21,12 @@
     "cors": "^2.8.5",
     "i": "^0.3.6",
     "nodemon": "^1.19.4",
+    "mongoose": "^5.7.9",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "react-redux": "^5.0.6",
+    "react-spinners": "^0.6.1",
+    "react-spring": "^8.0.27",
     "redux": "^3.7.2"
   },
   "devDependencies": {
@@ -36,6 +39,7 @@
     "babel-loader": "^8.0.6",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "body-parser": "^1.19.0",
     "concurrently": "^5.0.0",
     "cookie-parser": "^1.4.4",
     "cross-env": "^6.0.3",
@@ -44,6 +48,7 @@
     "express": "^4.17.1",
     "install": "^0.13.0",
     "node-sass": "^4.13.0",
+    "nodemon": "^1.19.4",
     "pg": "^7.12.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
