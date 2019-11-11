@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import StockBox from '../components/StockBox.jsx'
+import { useTransition, animated } from 'react-spring'
 
 const StockList = (props) => {
   const [state, setState] = useState({counter:0});

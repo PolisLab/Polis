@@ -110,9 +110,8 @@ class App extends Component{
         else if(this.state.whichTab =='2'){
             content = (<div>
               favorites
-              {/* <StockList whichTab={this.state.whichTab} name={this.state.name} togglePopup={this.togglePopup}/> */}
-              </div>
-            )
+              <StockList whichTab={this.state.whichTab} favList={this.state.userInfo.favorites} name={this.state.name} togglePopup={this.togglePopup}/>
+            </div>)
         }
         else if(this.state.whichTab == '3'){
           content =(

@@ -7,7 +7,7 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 const StockPopup = props => {
   let price = 0;
   let stockData = {};
-  const [isLoading, updateLoad] = useState(true);
+  const [isLoading, updateLoad] = useState(false);
 
   // fetch(
   //   `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${props.symbol}&interval=10min&outputsize=full&apikey=VRFP7Q7L5C1DU3EH`
@@ -114,7 +114,7 @@ chart.render();
           />
         </div> : 
         <div>
-          <p>{props.companyName},{props.symbol} Today's Price {price}!</p><button onClick={handleFav}>Favorite</button>
+          <p>{props.companyName},{props.symbol} Today's Price {price}!<button onClick={handleFav}>Favorite</button></p>
           <StockInfoDisplay data={stockData} stockName={props.companyName} stockSymbol={props.symbol}/>
           <span className= "closeButton" onClick={handleSave}>X</span>
         </div>}
