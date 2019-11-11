@@ -6,6 +6,12 @@
   border-radius: 5px;
 }
 
+.closeButton{
+  position: absolute;
+  right: 10px;
+  top:0;
+}
+
 .popup {  
   position: fixed;  
   width: 100%;  
