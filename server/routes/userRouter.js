@@ -14,10 +14,13 @@ router.post('/login',
 )
 
 router.post('/addfav',
-    userController.getFavs,
     userController.addFavs, 
-    (req, res) => res.status(200).json()
+    (req, res) => res.status(200).json(res.locals.addedFav)
 )
 
+router.post('/removefav', 
+    userController.removeFav,
+    (req, res) => res.status(200).json(res.locals.removedFav)
+)
 
 module.exports = router;
