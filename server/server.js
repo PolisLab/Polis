@@ -13,7 +13,7 @@ app.use('/build', express.static(path.join(__dirname, '../build')));
 app.use(cookieParser());
 app.use(express.json());
 
-
+app.use('/stocks');
 
 // api will be our homepage and we will run middlewater funcs in api router
 app.use('/user', userRouter)
@@ -35,10 +35,8 @@ app.use((err, req, res, next) => {
   return res.status(400).json('Global Error')
 })
 
-
-
 app.listen(PORT, () => {
-    console.log(`Server listening on port: ${PORT}`);
-  });
-  
-  module.exports = app;
+  console.log(`Server listening on port: ${PORT}`);
+});
+
+module.exports = app;
