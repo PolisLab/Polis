@@ -6,7 +6,6 @@ import SearchBar from './searchcomp'
 import StockList from '../container/StockList.jsx'
 import StockPopUp from './StockPopup'
 import CanvasJSReact from './canvasjs.react';
-import RenderList from './renderList';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -121,13 +120,11 @@ class App extends Component{
           content =(
             <div>
                 buys
-                {/* <RenderList list= {this.state.buys} togglePopup ={this.togglePopup}/> */}
+                <RenderList list= {this.state.buys} togglePopup ={this.togglePopup}/>
                 {/* <StockList name={this.state.name} togglePopup={this.togglePopup}/> */}
                 </div>
             )
         }
-
-
 
     return(
       <div>
