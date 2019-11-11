@@ -13,7 +13,10 @@ class App extends Component{
         enteredPassword:'',
         name:'',
         isPicked: false,
-        companyName:''
+        companyName:'',
+        userInfo: {
+          favorites: [],
+        },
       }
       this.passwordChangeHandler = this.passwordChangeHandler.bind(this);
       this.usernameChangeHandler = this.usernameChangeHandler.bind(this);
@@ -29,12 +32,6 @@ class App extends Component{
       })
     }
     LoginClick(){
-      console.log('entered User name is ' ,this.state.enteredUsername);
-      console.log('entered password is ' ,this.state.enteredPassword);
-      console.log(JSON.stringify({
-        email_address: this.state.enteredUsername,
-        password: this.state.enteredPassword
-      }));
       fetch('/user/login',{
         method: 'POST', 
         headers: {
@@ -46,7 +43,9 @@ class App extends Component{
         })
       })
       .then(body => body.json())
-      .then(body => console.log(body));
+      .then(body => {
+        this.setState({userInfo: body});
+      });
     }
     passwordChangeHandler(event){
         event.preventDefault();
@@ -72,18 +71,12 @@ class App extends Component{
     }
     render(){
       console.log('app line 74',this.state.name);
-      let stockRender;
-      // if(this.state.isPicked){
-      //   stockRender= (
-          
-      //   )
-      // }
     return(
       <div>
         <Header SignupClick = {this.SignupClick} LoginClick ={this.LoginClick} passwordChangeHandler ={this.passwordChangeHandler} usernameChangeHandler ={this.usernameChangeHandler} enteredUsername = {this.state.enteredUsername} enteredPassword={this.state.enteredPassword}/>
         <SearchBar name={this.state.name} nameChangeHandler={this.nameChangeHandler}/>
-        {this.state.isPicked ? <StockPopUp symbol ={this.state.companySymbol} companyName={this.state.companyName} closePopup ={this.togglePopup}/> : null}
-        <StockList name={this.state.name} togglePopup={this.togglePopup}/>
+        {this.state.isPicked ? <StockPopUp userName= {this.state.userInfo.email_address} symbol ={this.state.companySymbol} companyName={this.state.companyName} closePopup ={this.togglePopup}/> : null}
+        <StockList favList={this.state.userInfo.favorites} name={this.state.name} togglePopup={this.togglePopup}/>
       </div>
     )
   }
