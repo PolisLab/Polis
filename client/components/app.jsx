@@ -100,7 +100,7 @@ class App extends Component{
 			axisY: {
 				title: "Price",
 				includeZero: false,
-				suffix: "$"
+				prefix: "$"
 			},
 			axisX: {
 				title: "Week of Year",
@@ -109,7 +109,7 @@ class App extends Component{
 			},
 			data: [{
 				type: "line",
-				toolTipContent: "Week {x}: {y}%",
+				toolTipContent: "Week {x}: ${y}",
 				dataPoints: [
 					{ x: 1, y: 64 },
 					{ x: 2, y: 61 },
