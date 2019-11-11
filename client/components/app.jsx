@@ -6,7 +6,6 @@ import SearchBar from './searchcomp'
 import StockList from '../container/StockList.jsx'
 import StockPopUp from './StockPopup'
 import CanvasJSReact from './canvasjs.react';
-import RenderList from './renderList';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
