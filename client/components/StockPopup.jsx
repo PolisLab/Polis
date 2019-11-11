@@ -1,20 +1,22 @@
-import React, {useState, useEffect} from 'react';  
-import StockInfoDisplay from './StockInfoDisplay.jsx'
+import React, { useState, useEffect } from 'react';
+import StockInfoDisplay from './StockInfoDisplay.jsx';
 import ClipLoader from 'react-spinners/ClipLoader';
 
-const StockPopup = (props) =>{
-  let price =0;
-  let stockData= {};
+const StockPopup = props => {
+  let price = 0;
+  let stockData = {};
   const [isLoading, updateLoad] = useState(true);
 
-  fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${props.symbol}&interval=10min&outputsize=full&apikey=VRFP7Q7L5C1DU3EH`)
- .then(body => body.json())
- .then(body => {
-   updateLoad(false);
-   stockData = body["Time Series (10min)"];
-   console.log(body);
- })
- .catch(err => console.log(err));
+  // fetch(
+  //   `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${props.symbol}&interval=10min&outputsize=full&apikey=VRFP7Q7L5C1DU3EH`
+  // )
+  //   .then(body => body.json())
+  //   .then(body => {
+  //     updateLoad(false);
+  //     stockData = body['Time Series (10min)'];
+  //     console.log(body);
+  //   })
+  //   .catch(err => console.log(err));
 
   const override = `
   display: block;
@@ -22,9 +24,10 @@ const StockPopup = (props) =>{
   border-color: red;
   `;
 
-  const handleSave = () =>{
+  const handleSave = () => {
     props.closePopup();
   };
+
 
   const handleFav = () =>{
     if(!props.userName)
@@ -58,7 +61,7 @@ const StockPopup = (props) =>{
           />
         </div> : 
         <div>
-          <p>{props.companyName},{props.symbol} Today's Price{price}!</p><button onClick={handleFav}>Favorite</button>
+          <p>{props.companyName},{props.symbol} Today's Price {price}!</p><button onClick={handleFav}>Favorite</button>
           <StockInfoDisplay data={stockData} stockName={props.companyName} stockSymbol={props.symbol}/>
           <span className= "closeButton" onClick={handleSave}>X</span>
         </div>}
@@ -67,5 +70,4 @@ const StockPopup = (props) =>{
   );
 };
 
-
-export default StockPopup ;
+export default StockPopup;
