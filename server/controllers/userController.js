@@ -107,7 +107,7 @@ userController.verifyUser  = (req, res, next) => {
       next();
     } else {
       if (result.password === password) {
-        res.locals.userInfo = result
+        res.locals.userInfo = result;
         next();
       }
       else {

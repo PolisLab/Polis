@@ -21,9 +21,9 @@ class App extends Component{
         isPicked: false,
         companyName:'',
         whichTab: '1',
-        userInfo: {
-          favorites: [],
-        },
+        favorites:[],
+        buys:[],
+        email:''
       }
       this.passwordChangeHandler = this.passwordChangeHandler.bind(this);
       this.usernameChangeHandler = this.usernameChangeHandler.bind(this);
@@ -55,8 +55,10 @@ class App extends Component{
       })
       .then(body => body.json())
       .then(body => {
-        console.log(body.favorites);
-        this.setState({userInfo: body.favorites});
+        console.log(body);
+        this.setState({favorites: body.favorites,
+        email:body.email,
+      buys:body.buys});
       });
     }
     stockListChangeHandler(){
@@ -101,33 +103,34 @@ class App extends Component{
       
         //   )
         // }
-        console.log(this.state.whichTab);
+       
         let content;
         if(this.state.whichTab == '1'){
-        content =(<StockList whichTab={this.state.whichTab} name={this.state.name} togglePopup={this.togglePopup}/>)
+        content =(<StockList name={this.state.name} togglePopup={this.togglePopup}/>)
         }
         else if(this.state.whichTab =='2'){
             content = (<div>
               favorites
-              <StockList whichTab={this.state.whichTab} favList={this.state.userInfo.favorites} name={this.state.name} togglePopup={this.togglePopup}/>
-            </div>)
+              <RenderList list= {this.state.favorites} togglePopup ={this.togglePopup}/>
+              {/* <StockList name={this.state.name} togglePopup={this.togglePopup}/> */}
+              </div>
+            )
         }
         else if(this.state.whichTab == '3'){
           content =(
             <div>
                 buys
-                {/* <StockList whichTab={this.state.whichTab} name={this.state.name} togglePopup={this.togglePopup}/> */}
+                <RenderList list= {this.state.buys} togglePopup ={this.togglePopup}/>
+                {/* <StockList name={this.state.name} togglePopup={this.togglePopup}/> */}
                 </div>
             )
         }
-
-
 
     return(
       <div>
         <Header SignupClick = {this.SignupClick} LoginClick ={this.LoginClick} passwordChangeHandler ={this.passwordChangeHandler} usernameChangeHandler ={this.usernameChangeHandler} enteredUsername = {this.state.enteredUsername} enteredPassword={this.state.enteredPassword}/>
         <SearchBar whichTab ={this.state.whichTab} buysListChangeHandler={this.buysListChangeHandler} stockListChangeHandler ={this.stockListChangeHandler} favsListChangeHandler={this.favsListChangeHandler} name={this.state.name} nameChangeHandler={this.nameChangeHandler}/>
-        {this.state.isPicked ? <StockPopUp userName= {this.state.userInfo.email_address} symbol ={this.state.companySymbol} companyName={this.state.companyName} closePopup ={this.togglePopup}/> : null}
+        {this.state.isPicked ? <StockPopUp userName= {this.state.email_address} symbol ={this.state.companySymbol} companyName={this.state.companyName} closePopup ={this.togglePopup}/> : null}
         {content}
       </div>
     )
