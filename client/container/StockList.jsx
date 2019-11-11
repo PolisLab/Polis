@@ -512,19 +512,26 @@ const StockList = (props) => {
   ];
 
   const arrToShow = [];
+  const favList = [];
   let stocksToShow = 40;
   if(props.name !== ""){
     stocksToShow = snp500.length;
   }
   for(let i = 0; i < stocksToShow; i++){
-    if(snp500[i][0].toLowerCase().indexOf(props.name) !== -1)
+    if(props.favList && props.favList.includes(snp500[i][1])){
+      favList.push(<StockBox key={i} togglePopup ={props.togglePopup} stockName={snp500[i][0]} stockSymbol={snp500[i][1]}/>);
+    }
+    else if(snp500[i][0].toLowerCase().indexOf(props.name) !== -1){
       arrToShow.push(<StockBox key={i} togglePopup ={props.togglePopup} stockName={snp500[i][0]} stockSymbol={snp500[i][1]}/>);
-    else if(snp500[i][1].toLowerCase().indexOf(props.name) !== -1)
+    }
+    else if(snp500[i][1].toLowerCase().indexOf(props.name) !== -1){
       arrToShow.push(<StockBox key={i} togglePopup ={props.togglePopup} stockName={snp500[i][0]} stockSymbol={snp500[i][1]}/>);
+    }
   }
 
   return (
     <div>
+      {favList.length !== 0 ? <div>Favorites {favList}</div> : null}
       {arrToShow}
     </div>
   );

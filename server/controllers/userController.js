@@ -110,7 +110,7 @@ userController.verifyUser  = (req, res, next) => {
         res.locals.userInfo = result
         next();
       }
-      if (result.password !== JSON.stringify(password)) {
+      else {
         res.locals.userInfo = {message: 'Wrong password'}
         next();
       }  
