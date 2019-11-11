@@ -13,7 +13,7 @@ app.use('/build', express.static(path.join(__dirname, '../build')));
 app.use(cookieParser());
 app.use(express.json());
 
-app.use('/stocks');
+
 
 // api will be our homepage and we will run middlewater funcs in api router
 app.use('/user', userRouter)
