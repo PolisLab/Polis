@@ -19,23 +19,10 @@ const userSchema = new Schema({
     password: {type: String, required: true},
     first_name : {type:String, required:true},
     last_name: String,
-    array: [],
     favorites: [String]
 })
 
 const User = mongoose.model('user', userSchema);
-
-const favStockSchema = new Schema({
-    userId : {
-        type: Schema.Types.ObjectId,
-        ref: 'user'
-    },
-    favStockId : String
-})
-
-
-
-const Fav = mongoose.model('favs', favStockSchema);
 
 const buySchema = new Schema({
     userId : {
@@ -52,6 +39,5 @@ const Buy = mongoose.model('buy', buySchema)
 
 module.exports = {
     User, 
-    Fav, 
     Buy
 }
