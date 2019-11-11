@@ -7,12 +7,16 @@ const StockInfoDisplay = (props) => {
   if(props.stockName){
     name = props.stockName;
     symbol = props.stockSymbol;
-    console.log(name);
   }
+  const addFav = () => {
+    fetch('/addfav')
+  }
+
+
   return (
-    <div className= "stockBox" onClick = {()=> props.togglePopup(name,symbol)}>
-      <button>Favorite</button><button>Buy</button>
-      <p>{name}</p>
+    <div className= "stockBox" >
+      <input type="date"></input>
+      <button>Buy</button>
     </div>
   );
 }

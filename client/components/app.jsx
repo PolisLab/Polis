@@ -14,19 +14,19 @@ class App extends Component{
         name:'',
         isPicked: false,
         companyName:''
-        }
-        this.passwordChangeHandler = this.passwordChangeHandler.bind(this);
-        this.usernameChangeHandler = this.usernameChangeHandler.bind(this);
-        this.nameChangeHandler = this.nameChangeHandler.bind(this);
-        this.SignupClick = this.SignupClick.bind(this);
-        this.LoginClick = this.LoginClick.bind(this);
-        this.togglePopup = this.togglePopup.bind(this);
+      }
+      this.passwordChangeHandler = this.passwordChangeHandler.bind(this);
+      this.usernameChangeHandler = this.usernameChangeHandler.bind(this);
+      this.nameChangeHandler = this.nameChangeHandler.bind(this);
+      this.SignupClick = this.SignupClick.bind(this);
+      this.LoginClick = this.LoginClick.bind(this);
+      this.togglePopup = this.togglePopup.bind(this);
     }
     SignupClick(){
-        axios.post('/user/signup',{
-            'username':this.state.enteredUsername,
-            'password': this.state.enteredPassword
-        })
+      axios.post('/user/signup',{
+        'username':this.state.enteredUsername,
+        'password': this.state.enteredPassword
+      })
     }
     LoginClick(){
       console.log('entered User name is ' ,this.state.enteredUsername);
@@ -62,7 +62,7 @@ class App extends Component{
         this.setState({name: event.target.value});
     }
     togglePopup(newname, newSymbol){
-      console.log(newname);
+      console.log('app line 65', newname, newSymbol);
       if(this.state.isPicked == false){
         this.setState({'isPicked':true,'companyName':newname, 'companySymbol': newSymbol});
       }
@@ -71,18 +71,18 @@ class App extends Component{
       }
     }
     render(){
-      console.log(this.state.name);
+      console.log('app line 74',this.state.name);
       let stockRender;
-      if(this.state.isPicked){
-        stockRender= (
-          <StockPopUp symbol ={this.state.companySymbol} companyName={this.state.companyName} closePopup ={this.togglePopup}/>
-        )
-      }
+      // if(this.state.isPicked){
+      //   stockRender= (
+          
+      //   )
+      // }
     return(
       <div>
         <Header SignupClick = {this.SignupClick} LoginClick ={this.LoginClick} passwordChangeHandler ={this.passwordChangeHandler} usernameChangeHandler ={this.usernameChangeHandler} enteredUsername = {this.state.enteredUsername} enteredPassword={this.state.enteredPassword}/>
         <SearchBar name={this.state.name} nameChangeHandler={this.nameChangeHandler}/>
-        {stockRender}
+        {this.state.isPicked ? <StockPopUp symbol ={this.state.companySymbol} companyName={this.state.companyName} closePopup ={this.togglePopup}/> : null}
         <StockList name={this.state.name} togglePopup={this.togglePopup}/>
       </div>
     )

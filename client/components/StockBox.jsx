@@ -7,7 +7,6 @@ const StockBox = (props) => {
   if(props.stockName){
     name = props.stockName;
     symbol = props.stockSymbol;
-    console.log(name);
   }
   return (
     <div className= "stockBox" onClick = {()=> props.togglePopup(name,symbol)}>
