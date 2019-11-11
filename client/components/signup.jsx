@@ -5,7 +5,7 @@ return (
   <div>
    <form >
 
-<label>Username</label>
+<label>Email</label>
 
     <input
 
