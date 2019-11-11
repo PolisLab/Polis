@@ -102,7 +102,7 @@ chart.render();
   return (  
     <div className='popup' >  
      <div id="chartContainer" style={{height: 360 + "px", width: 100 + "%"}}></div>
-    <div className='popup_inner'>  
+    {/* <div className='popup_inner'>  
         {isLoading ? 
         <div className='sweet-loading'>
           <ClipLoader
@@ -118,7 +118,7 @@ chart.render();
           <StockInfoDisplay data={stockData} stockName={props.companyName} stockSymbol={props.symbol}/>
           <span className= "closeButton" onClick={handleSave}>X</span>
         </div>}
-      </div>  
+      </div>   */}
     </div>  
   );
 };
