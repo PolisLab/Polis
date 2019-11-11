@@ -16,8 +16,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
+    "chart.js": "^2.9.2",
     "cors": "^2.8.5",
     "i": "^0.3.6",
+    "nodemon": "^1.19.4",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "react-redux": "^5.0.6",
@@ -25,6 +28,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.7.0",
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
     "axios": "^0.19.0",
@@ -43,6 +47,7 @@
     "pg": "^7.12.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-vis": "^1.11.7",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "use-position": "0.0.6",
@@ -55,6 +60,9 @@
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
     ]
   }
 }
