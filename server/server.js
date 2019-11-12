@@ -12,14 +12,16 @@ app.use(express.json());
 
 const stocksRouter = require('./routes/stocksRouter');
 const usersRouter = require('./routes/userRouter');
+const pastStockRouter = require('./routes/pastStocksRouter');
 
 //WEBPACK BUILD
 app.use('/build', express.static(path.join(__dirname, '../build')));
 
 
 // ROUTE HANDLING
-app.use('/users', usersRouter);
+app.use('/user', usersRouter);
 app.use('/stocks', stocksRouter);
+app.use('/pastStock', pastStockRouter)
 // app.use('/api', apiRouter);
 
 //MAIN PAGE

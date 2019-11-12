@@ -3,9 +3,11 @@ const userController = require('../controllers/userController');
 const router = express.Router();
 const stocksController = require('../controllers/stocksController');
 
+
 router.post('/signup', userController.createUser, (req, res) =>
   res.status(200).json(res.locals.userInfo)
 );
+
 
 router.post(
   '/login',
