@@ -5,7 +5,7 @@ import StockGraphDisplay from './StockGraphDisplay.jsx';
 
 const StockPopup = props => {
   let price = 0;
-  const [stockData, updateData] = useState({
+  const [graphInfo, updateData] = useState({
     stockData: {},
     isLoading: true
   });
@@ -21,7 +21,6 @@ const StockPopup = props => {
       });
     });
   }, []);
-
 
   const override = `
   display: block;
@@ -50,27 +49,27 @@ const StockPopup = props => {
       .catch(err => console.log(err));
     }
   }
-
+  console.log("this is graph Info", graphInfo);
   return (  
     <div className='popup' >  
-    <div className='popup_inner'>  
-        {/* {stockData.isLoading ? 
+      <div className='popup_inner'>  
+        {graphInfo.isLoading ? 
         <div className='sweet-loading'>
           <ClipLoader
             css={override}
             sizeUnit={"px"}
             size={150}
             color={'#123abc'}
-            loading={stockData.isLoading}
+            loading={graphInfo.isLoading}
           />
-        </div> :  */}
+        </div> : 
         <div>
           <p>{props.companyName},{props.symbol} Today's Price {price}!<button onClick={handleFav}>Favorite</button></p>
-          <StockGraphDisplay data={stockData.stockData}/>
-          <StockInfoDisplay userName={props.userName} stockName={props.companyName} stockSymbol={props.symbol}/>
+          <StockGraphDisplay data={graphInfo.stockData}/>
+          <StockInfoDisplay data={graphInfo.stockData} userName={props.userName} stockName={props.companyName} stockSymbol={props.symbol}/>
           <span className= "closeButton" onClick={handleSave}>X</span>
-        </div>
-      </div>  
+        </div>}
+      </div>
     </div>  
   );
 };

@@ -5,14 +5,15 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const GraphDisplay = props => {
 	console.log('props inside graph' , props.stockData);
+	
   useEffect(()=>{
-		let dataPoints = [];
+		let dataSets = [];
 		if(props.data.changes){
-			for(let i = 0; i < props.data.changes.length; i+=100){
-				dataPoints.push({x : i , y: Object.values(props.data.changes[i])[0]})
+			for(let i = props.data.changes.length - 1, j = 0; i >= 0; i-=100, j++){
+				dataSets.push({x : j , y: Number(Object.values(props.data.changes[i])[0])});
 			}
 		}
-		console.log('datapoints', dataPoints);
+		console.log('datapoints', dataSets);
     var chart = new CanvasJS.Chart("chartContainer", {
 			animationEnabled: true,
 			exportEnabled: true,
@@ -33,7 +34,7 @@ const GraphDisplay = props => {
 			data: [{
 				type: "line",
 				toolTipContent: "Week {x}: ${y}",
-				dataPoints: dataPoints
+				dataPoints: dataSets
 			}]
     })
     chart.render();
