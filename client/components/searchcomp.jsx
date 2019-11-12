@@ -7,7 +7,7 @@ const SearchBar = (props)=>{
     
 
 
-      <label>Search Companies</label>
+      <label>Search Companies:     </label>
 
       <input type="text" value={props.name} onChange={props.nameChangeHandler} required></input>
       </form>);
@@ -22,12 +22,12 @@ const SearchBar = (props)=>{
     
     <div>
       {search}
-      <div onClick = {()=>props.buysListChangeHandler()}>
-        Buys
-      </div>
-      <div onClick ={()=>props.favsListChangeHandler()}>
+      <div><span onClick = {()=>props.buysListChangeHandler()}>
+        Buys  
+      </span> <span>  </span>  
+      <span onClick ={()=>props.favsListChangeHandler()}>
         Favorites
-      </div>
+      </span></div>
     </div>
 
   )

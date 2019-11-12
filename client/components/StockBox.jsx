@@ -9,7 +9,7 @@ const StockBox = (props) => {
     symbol = props.stockSymbol;
   }
   return (
-    <div className= "stockBox" onClick = {()=> props.togglePopup(name,symbol)}>
+    <div id= "stockBox" className="grow" onClick = {()=> props.togglePopup(name,symbol)}>
       <p>{name}</p>
     </div>
   );
