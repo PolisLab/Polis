@@ -43,42 +43,45 @@ stocksController.deleteBuy = (req, res, next) => {
   });
 };
 
-stocksController.savePastStocks = (req, res, next) => {
-  const { symbol } = req.body;
-  fetch(
-    `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=full&apikey=VRFP7Q7L5C1DU3EH`
+stocksController.getAllPastStock = (req, res, next) => {
+  const symbol = req.params.stockId
+  console.log('symbol ins get all paststock si', symbol)
+  models.PastStock.findOne({stockSymbol: symbol}, (err, result) => {
+    console.log(result)
+    if (err) {
+      return next('Error in stocksControllers.getAllPastStock')
+    }
+    if (result === null) {
+      console.log('nothing found in getallparststock')
+      fetch(
+        `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=full&apikey=VRFP7Q7L5C1DU3EH`
+      )
+        .then(result => result.json())
+        .then(result => {
+          const resultSymbol = result['Meta Data']['2. Symbol'];
+          const price = result['Time Series (Daily)']['4. close'];
+          const finalResult = [];
+          for (let key in result['Time Series (Daily)']) {
+            let innerObj = {};
+            innerObj[key] = result['Time Series (Daily)'][key]['4. close'];
+            finalResult.push(innerObj);
+          }
+          models.PastStock.create({
+            stockSymbol: symbol,
+            changes: finalResult
+          }).then(result => {
+            console.log('this should be whats saved to db', result);
+            res.locals.pastStock = result;
+            next();
+          });
+        })
+        .catch(err => console.log(err));
+    } else {
+      res.locals.pastStock = result;
+      return next();
+      console.log('result if you find ur shit', result)
+    }
+  }
   )
-    .then(result => result.json())
-    .then(result => {
-      // console.log(result['Time Series (Daily)']);
-      const resultSymbol = result['Meta Data']['2. Symbol'];
-      const price = result['Time Series (Daily)']['4. close'];
-      const finalResult = [];
-      for (let key in result['Time Series (Daily)']) {
-        let innerObj = {};
-        innerObj[key] = result['Time Series (Daily)'][key]['4. close'];
-
-        finalResult.push(innerObj);
-      }
-      // console.log(finalResult);
-      // let bigObj = {
-      //   symbol: resultSymbol,
-      //   changes: finalResult
-      // };
-      // // console.log(bigObj);
-      // const { symbol, changes } = bigObj;
-      models.PastStock.create({
-        stockSymbol: symbol,
-        changes: finalResult
-      }).then(result => {
-        console.log('this should be whats saved to db', result);
-        res.locals.pastStock = result;
-        next();
-      });
-    })
-    .catch(err => console.log(err));
-  //build for in loop to pull out closing costs for each day
-  //check if stocks already exist in db
-};
-
+ }
 module.exports = stocksController;

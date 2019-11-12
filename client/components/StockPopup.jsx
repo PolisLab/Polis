@@ -5,8 +5,23 @@ import StockGraphDisplay from './StockGraphDisplay.jsx';
 
 const StockPopup = props => {
   let price = 0;
-  let stockData = {};
-  const [isLoading, updateLoad] = useState(false);
+  const [stockData, updateData] = useState({
+    stockData: {},
+    isLoading: true
+  });
+
+  useEffect(() =>{
+    fetch(`/stocks/getAllPastStocks/${props.symbol}`)
+    .then(data => data.json())
+    .then(data =>{
+      console.log(data);
+      updateData({
+        stockData: data,
+        isLoading: false,
+      });
+    });
+  }, []);
+
 
   const override = `
   display: block;
@@ -39,22 +54,22 @@ const StockPopup = props => {
   return (  
     <div className='popup' >  
     <div className='popup_inner'>  
-        {isLoading ? 
+        {/* {stockData.isLoading ? 
         <div className='sweet-loading'>
           <ClipLoader
             css={override}
             sizeUnit={"px"}
             size={150}
             color={'#123abc'}
-            loading={isLoading}
+            loading={stockData.isLoading}
           />
-        </div> : 
+        </div> :  */}
         <div>
           <p>{props.companyName},{props.symbol} Today's Price {price}!<button onClick={handleFav}>Favorite</button></p>
-          <StockGraphDisplay data={stockData}/>
+          <StockGraphDisplay data={stockData.stockData}/>
           <StockInfoDisplay userName={props.userName} stockName={props.companyName} stockSymbol={props.symbol}/>
           <span className= "closeButton" onClick={handleSave}>X</span>
-        </div>}
+        </div>
       </div>  
     </div>  
   );
