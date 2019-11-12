@@ -15,22 +15,20 @@ stocksController.getBuys = (req, res, next) => {
 
 stocksController.addBuy = (req, res, next) => {
   console.log(req.body);
-  models.Buy.create(
-    {
-      email_address: req.body.email_address,
-      boughtStockID: req.body.boughtStockID,
-      date: req.body.date,
-      purchasedPrice: req.body.purchasedPrice,
-      numberOfShares: req.body.numberOfShares
-    },
-    (err, buys) => {
-      if (err)
-        return next('Error in stocksController.addBuy: ' + JSON.stringify(err));
-      console.log(buys);
-      res.locals.buys = buys;
-      return next();
-    }
-  );
+  models.Buy.create({ 
+    email_address: req.body.email_address, 
+    boughtStockID: req.body.boughtStockID, 
+    date: req.body.date, 
+    purchasedPrice: req.body.purchasedPrice,
+    numberOfShares : req.body.numberOfShares
+  },(err, buys) => {
+    if (err)
+      return next('Error in stocksController.addBuy: ' + JSON.stringify(err));
+    console.log(buys);
+    res.locals.userInfo.buys = buys;
+    return next();
+  });
+
 };
 
 stocksController.deleteBuy = (req, res, next) => {
