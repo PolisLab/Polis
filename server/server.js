@@ -21,7 +21,6 @@ app.use('/build', express.static(path.join(__dirname, '../build')));
 app.use('/user', usersRouter);
 app.use('/stocks', stocksRouter);
 
-// app.use('/api', apiRouter);
 
 //MAIN PAGE
 app.use('/', (req, res) => {
