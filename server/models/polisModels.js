@@ -27,24 +27,15 @@ const userSchema = new Schema({
 const User = mongoose.model('user', userSchema);
 
 const buySchema = new Schema({
-  email_address: {
-    type: Schema.Types.ObjectId,
-    ref: 'user'
-  },
-  boughtStockId: String,
-  date: Date,
-  purchasedPrice: Number,
-  prediction: Number
-});
+    email_address : String,
+    boughtStockId : String,
+    date : String,
+    purchasedPrice : Number,
+    numberOfShares : Number,
+    prediction: Number
+})
 
-const Buy = mongoose.model('buy', buySchema);
-
-const pastStockSchema = new Schema({
-  stockSymbol: String,
-  changes: [Object]
-});
-
-const PastStock = mongoose.model('pastStocks', pastStockSchema);
+const Buy = mongoose.model('buy', buySchema)
 
 module.exports = {
   User,

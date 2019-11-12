@@ -1,23 +1,20 @@
 const express = require('express');
 const stocksController = require('../controllers/stocksController');
-
 const router = express.Router();
 
 router.get('/pastStocks', stocksController.savePastStocks, (req, res) => {
   res.status(200).json(res.locals.pastStock);
 });
 
-router.get(
-  '/stocks/:id',
+router.get('/buys/:email',
   stocksController.getBuys,
-  // stocksController.getFavs,
   (req, res) => {
-    res.status(200).json({ stocks: res.locals.buys, favs: res.locals.favs });
+    res.status(200).json({ stocks: res.locals.buys});
   }
 );
 
 router.post(
-  '/stocks/buys/',
+  '/buys',
   stocksController.getBuys,
   stocksController.addBuy,
   (req, res) => {
@@ -26,30 +23,12 @@ router.post(
 );
 
 router.delete(
-  '/stocks/buys/:id',
+  '/buys',
   stocksController.getBuys,
   stocksController.deleteBuy,
   (req, res) => {
     res.status(200).json({ stocks: res.locals.buys });
   }
 );
-
-// router.post(
-//   '/stocks/favs/:id',
-//   stocksController.getFavs,
-//   stocksController.addFav,
-//   (req, res) => {
-//     res.status(200).json({ stocks: res.locals.favs });
-//   }
-// );
-
-// router.delete(
-//   '/stocks/favs/:id',
-//   stocksController.getFavs,
-//   stocksController.deleteFav,
-//   (req, res) => {
-//     res.status(200).json({ stocks: res.locals.favs });
-//   }
-// );
 
 module.exports = router;

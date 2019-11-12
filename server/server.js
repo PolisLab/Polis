@@ -5,6 +5,7 @@ const PORT = 3000;
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
+
 app.use(cookieParser());
 app.use(bodyParser());
 app.use(express.json());
@@ -14,6 +15,7 @@ const usersRouter = require('./routes/userRouter');
 
 //WEBPACK BUILD
 app.use('/build', express.static(path.join(__dirname, '../build')));
+
 
 // ROUTE HANDLING
 app.use('/users', usersRouter);
