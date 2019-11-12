@@ -3,10 +3,14 @@ const stocksController = require('../controllers/stocksController');
 
 const router = express.Router();
 
+router.get('/pastStocks', stocksController.savePastStocks, (req, res) => {
+  res.status(200).json(res.locals.pastStock);
+});
+
 router.get(
   '/stocks/:id',
   stocksController.getBuys,
-  stocksController.getFavs,
+  // stocksController.getFavs,
   (req, res) => {
     res.status(200).json({ stocks: res.locals.buys, favs: res.locals.favs });
   }
@@ -30,20 +34,22 @@ router.delete(
   }
 );
 
-router.post(
-  '/stocks/favs/:id',
-  stocksController.getFavs,
-  stocksController.addFav,
-  (req, res) => {
-    res.status(200).json({ stocks: res.locals.favs });
-  }
-);
+// router.post(
+//   '/stocks/favs/:id',
+//   stocksController.getFavs,
+//   stocksController.addFav,
+//   (req, res) => {
+//     res.status(200).json({ stocks: res.locals.favs });
+//   }
+// );
 
-router.delete(
-  '/stocks/favs/:id',
-  stocksController.getFavs,
-  stocksController.deleteFav,
-  (req, res) => {
-    res.status(200).json({ stocks: res.locals.favs });
-  }
-);
+// router.delete(
+//   '/stocks/favs/:id',
+//   stocksController.getFavs,
+//   stocksController.deleteFav,
+//   (req, res) => {
+//     res.status(200).json({ stocks: res.locals.favs });
+//   }
+// );
+
+module.exports = router;
