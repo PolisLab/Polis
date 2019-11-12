@@ -21,6 +21,7 @@ app.use('/build', express.static(path.join(__dirname, '../build')));
 app.use('/user', usersRouter);
 app.use('/stocks', stocksRouter);
 
+
 //MAIN PAGE
 app.use('/', (req, res) => {
   res.status(200).sendFile(path.resolve(__dirname, '../index.html'));

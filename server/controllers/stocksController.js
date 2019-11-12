@@ -4,11 +4,11 @@ const fetch = require('node-fetch');
 const stocksController = {};
 
 stocksController.getBuys = (req, res, next) => {
-  const email_address= req.params.email;
+  const { email_address, password } = req.body;
   models.Buy.find({ email_address }, (err, buys) => {
     if (err)
       return next('Error in stocksController.getBuys: ' + JSON.stringify(err));
-    res.locals.buys = buys;
+    res.locals.userInfo.buys = buys;
     return next();
   });
 };
@@ -25,9 +25,10 @@ stocksController.addBuy = (req, res, next) => {
     if (err)
       return next('Error in stocksController.addBuy: ' + JSON.stringify(err));
     console.log(buys);
-    res.locals.buys = buys;
+    res.locals.userInfo.buys = buys;
     return next();
   });
+
 };
 
 stocksController.deleteBuy = (req, res, next) => {
@@ -80,6 +81,4 @@ stocksController.savePastStocks = (req, res, next) => {
   //check if stocks already exist in db
 };
 
-
 module.exports = stocksController;
-
