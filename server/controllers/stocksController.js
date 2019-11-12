@@ -12,6 +12,15 @@ stocksController.getBuys = (req, res, next) => {
   });
 };
 
+stocksController.addPastStocks  = (req, res, next) => {
+  const {stockSymbol} = req.body;
+  
+
+
+}
+
+
+
 // stocksController.getFavs = (req, res, next) => {
 //   const id = req.params.id;
 //   User.favorites.find({ userID: id }, (err, favs) => {

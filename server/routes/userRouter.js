@@ -1,6 +1,7 @@
 const express = require('express');
 const userController = require('../controllers/userController')
 const router = express.Router();
+const stockController = require('../controllers/')
 
 router.post('/signup',
     userController.createUser,
@@ -9,12 +10,14 @@ router.post('/signup',
 
 router.post('/login',
     userController.verifyUser,
+
     // userController.getFavs,
     (req, res) => res.status(200).json(res.locals.userInfo)
 )
 
 router.post('/addfav',
-    userController.addFavs, 
+    userController.addFavs,
+
     (req, res) => res.status(200).json(res.locals.addedFav)
 )
 

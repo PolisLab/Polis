@@ -17,7 +17,7 @@ app.use(express.json());
 
 // api will be our homepage and we will run middlewater funcs in api router
 app.use('/user', userRouter)
-
+app.use('/pastStock', pastStockRouter)
 // api/user will be /user
 // app.use('/api/user', userRouter)
 // app.use('/api/current', currentRouter );
