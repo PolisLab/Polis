@@ -22,12 +22,12 @@ const SearchBar = (props)=>{
     
     <div>
       {search}
-      <div onClick = {()=>props.buysListChangeHandler()}>
-        Buys
-      </div>
-      <div onClick ={()=>props.favsListChangeHandler()}>
+      <div><span onClick = {()=>props.buysListChangeHandler()}>
+        Buys  
+      </span> <span>  </span>  
+      <span onClick ={()=>props.favsListChangeHandler()}>
         Favorites
-      </div>
+      </span></div>
     </div>
 
   )
