@@ -1,10 +1,11 @@
-const db = require('../models/polisModel');
+const models = require('../models/polisModels');
+const fetch = require('node-fetch');
 
 const stocksController = {};
 
 stocksController.getBuys = (req, res, next) => {
-  const id = req.params.id;
-  Buy.find({ userID: id }, (err, buys) => {
+  const email_address= req.params.email;
+  models.Buy.find({ email_address }, (err, buys) => {
     if (err)
       return next('Error in stocksController.getBuys: ' + JSON.stringify(err));
     res.locals.buys = buys;
@@ -12,6 +13,7 @@ stocksController.getBuys = (req, res, next) => {
   });
 };
 
+<<<<<<< HEAD
 stocksController.addPastStocks  = (req, res, next) => {
   const {stockSymbol} = req.body;
   
@@ -30,35 +32,38 @@ stocksController.addPastStocks  = (req, res, next) => {
 //     return next();
 //   });
 // };
-
+=======
 stocksController.addBuy = (req, res, next) => {
-  const id = req.params.id;
-  Buy.create(
-    { userID: id, boughtStockID: req.body.boughtStockID },
-    (err, buys) => {
-      if (err)
-        return next('Error in stocksController.addBuy: ' + JSON.stringify(err));
-      res.locals.buys = buys;
-      return next();
-    }
-  );
+  console.log(req.body);
+  models.Buy.create({ 
+    email_address: req.body.email_address, 
+    boughtStockID: req.body.boughtStockID, 
+    date: req.body.date, 
+    purchasedPrice: req.body.purchasedPrice,
+    numberOfShares : req.body.numberOfShares
+  },(err, buys) => {
+    if (err)
+      return next('Error in stocksController.addBuy: ' + JSON.stringify(err));
+    console.log(buys);
+    res.locals.buys = buys;
+    return next();
+  });
 };
+>>>>>>> e1498e6e5715881fc1b057a7b13ae1dd5ce45acf
 
 stocksController.deleteBuy = (req, res, next) => {
-  const id = req.params.id;
-  Buy.remove(
-    { userID: id, boughtStockID: req.body.boughtStockID },
-    (err, buys) => {
-      if (err)
-        return next(
-          'Error in stocksController.deleteBuy: ' + JSON.stringify(err)
-        );
-      res.locals.buys = buys;
-      return next();
-    }
-  );
+  const { email_address, boughtStockID } = req.body;
+  models.Buy.remove({ email_address, boughtStockID }, (err, buys) => {
+    if (err)
+      return next(
+        'Error in stocksController.deleteBuy: ' + JSON.stringify(err)
+      );
+    res.locals.buys = buys;
+    return next();
+  });
 };
 
+<<<<<<< HEAD
 // stocksController.addFav = (req, res, next) => {
 //   const id = req.params.id;
 //   User.favorites.create(
@@ -71,21 +76,49 @@ stocksController.deleteBuy = (req, res, next) => {
 //     }
 //   );
 // };
+=======
+stocksController.savePastStocks = (req, res, next) => {
+  const { symbol } = req.body;
+  fetch(
+    `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=full&apikey=VRFP7Q7L5C1DU3EH`
+  )
+    .then(result => result.json())
+    .then(result => {
+      // console.log(result['Time Series (Daily)']);
+      const resultSymbol = result['Meta Data']['2. Symbol'];
+      const price = result['Time Series (Daily)']['4. close'];
+      const finalResult = [];
+      for (let key in result['Time Series (Daily)']) {
+        let innerObj = {};
+        innerObj[key] = result['Time Series (Daily)'][key]['4. close'];
+>>>>>>> e1498e6e5715881fc1b057a7b13ae1dd5ce45acf
 
-stocksController.deleteFav = (req, res, next) => {
-  const id = req.params.id;
-  Buy.remove(
-    { userID: id, boughtStockID: req.body.boughtStockID },
-    (err, favs) => {
-      if (err)
-        return next(
-          'Error in stocksController.deleteFav: ' + JSON.stringify(err)
-        );
-      res.locals.favs = favs;
-      return next();
-    }
-  );
+        finalResult.push(innerObj);
+      }
+      // console.log(finalResult);
+      // let bigObj = {
+      //   symbol: resultSymbol,
+      //   changes: finalResult
+      // };
+      // // console.log(bigObj);
+      // const { symbol, changes } = bigObj;
+      models.PastStock.create({
+        stockSymbol: symbol,
+        changes: finalResult
+      }).then(result => {
+        console.log('this should be whats saved to db', result);
+        res.locals.pastStock = result;
+        next();
+      });
+    })
+    .catch(err => console.log(err));
+  //build for in loop to pull out closing costs for each day
+  //check if stocks already exist in db
 };
 
 
+<<<<<<< HEAD
+=======
+module.exports = stocksController;
+>>>>>>> e1498e6e5715881fc1b057a7b13ae1dd5ce45acf
 
