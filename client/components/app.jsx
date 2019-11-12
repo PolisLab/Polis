@@ -39,7 +39,7 @@ class App extends Component {
   }
   LoginClick(){
     console.log("inside login click")
-    fetch('/user/login',{
+    fetch('/users/login',{
       method: 'POST', 
       headers: {
         "Content-Type": "application/json"
