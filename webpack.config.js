@@ -36,10 +36,10 @@ module.exports = {
   devServer: {
     publicPath: '/build',
     port: 8080,
-    proxy: {
-      '/': {
+    proxy:{
+      '/':{
         target: 'http://localhost:3000',
-        secure: false
+        secure: false,
       }
     }
   }

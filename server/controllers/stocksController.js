@@ -1,3 +1,4 @@
+
 const models = require('../models/polisModels');
 const fetch = require('node-fetch');
 
@@ -46,8 +47,6 @@ stocksController.deleteBuy = (req, res, next) => {
 };
 
 stocksController.savePastStocks = (req, res, next) => {
-  // console.log('this shit works');
-  // console.log(req.body);
   const { symbol } = req.body;
   fetch(
     `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=full&apikey=VRFP7Q7L5C1DU3EH`
@@ -114,3 +113,4 @@ stocksController.savePastStocks = (req, res, next) => {
 // };
 
 module.exports = stocksController;
+

@@ -17,7 +17,7 @@ router.get(
 );
 
 router.post(
-  '/stocks/buys/:id',
+  '/stocks/buys/',
   stocksController.getBuys,
   stocksController.addBuy,
   (req, res) => {
