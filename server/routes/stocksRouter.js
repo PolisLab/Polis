@@ -31,8 +31,5 @@ router.delete(
   }
 );
 
-<<<<<<< HEAD
+
 module.exports = router;
-=======
-module.exports = router;
->>>>>>> e1498e6e5715881fc1b057a7b13ae1dd5ce45acf

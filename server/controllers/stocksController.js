@@ -13,26 +13,6 @@ stocksController.getBuys = (req, res, next) => {
   });
 };
 
-<<<<<<< HEAD
-stocksController.addPastStocks  = (req, res, next) => {
-  const {stockSymbol} = req.body;
-  
-
-
-}
-
-
-
-// stocksController.getFavs = (req, res, next) => {
-//   const id = req.params.id;
-//   User.favorites.find({ userID: id }, (err, favs) => {
-//     if (err)
-//       return next('Error in stocksController.getFavs: ' + JSON.stringify(err));
-//     res.locals.favs = favs;
-//     return next();
-//   });
-// };
-=======
 stocksController.addBuy = (req, res, next) => {
   console.log(req.body);
   models.Buy.create({ 
@@ -49,7 +29,6 @@ stocksController.addBuy = (req, res, next) => {
     return next();
   });
 };
->>>>>>> e1498e6e5715881fc1b057a7b13ae1dd5ce45acf
 
 stocksController.deleteBuy = (req, res, next) => {
   const { email_address, boughtStockID } = req.body;
@@ -63,20 +42,6 @@ stocksController.deleteBuy = (req, res, next) => {
   });
 };
 
-<<<<<<< HEAD
-// stocksController.addFav = (req, res, next) => {
-//   const id = req.params.id;
-//   User.favorites.create(
-//     { userID: id, favorites: req.body.favorites },
-//     (err, favs) => {
-//       if (err)
-//         return next('Error in stocksController.addFav: ' + JSON.stringify(err));
-//       res.locals.favs = favs;
-//       return next();
-//     }
-//   );
-// };
-=======
 stocksController.savePastStocks = (req, res, next) => {
   const { symbol } = req.body;
   fetch(
@@ -91,7 +56,6 @@ stocksController.savePastStocks = (req, res, next) => {
       for (let key in result['Time Series (Daily)']) {
         let innerObj = {};
         innerObj[key] = result['Time Series (Daily)'][key]['4. close'];
->>>>>>> e1498e6e5715881fc1b057a7b13ae1dd5ce45acf
 
         finalResult.push(innerObj);
       }
@@ -117,8 +81,5 @@ stocksController.savePastStocks = (req, res, next) => {
 };
 
 
-<<<<<<< HEAD
-=======
 module.exports = stocksController;
->>>>>>> e1498e6e5715881fc1b057a7b13ae1dd5ce45acf
 

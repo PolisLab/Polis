@@ -111,37 +111,6 @@ class App extends Component {
         </div>
       )
     }
-<<<<<<< HEAD
-    render(){
-      console.log('app line 74',this.state.name);
-      let stockRender;
-      // if(this.state.isPicked){
-      //   stockRender= (
-      
-        //   )
-        // }
-        console.log(this.state.whichTab);
-        let content;
-        if(this.state.whichTab == '1'){
-        content =(<StockList whichTab={this.state.whichTab} name={this.state.name} togglePopup={this.togglePopup}/>)
-        }
-        else if(this.state.whichTab =='2'){
-            content = (<div>
-              favorites
-              <StockList whichTab={this.state.whichTab} name={this.state.name} togglePopup={this.togglePopup}/></div>
-            )
-        }
-        else if(this.state.whichTab == '3'){
-          content =(
-            <div>
-                buys
-                <StockList whichTab={this.state.whichTab} name={this.state.name} togglePopup={this.togglePopup}/></div>
-            )
-        }
-
-
-=======
->>>>>>> e1498e6e5715881fc1b057a7b13ae1dd5ce45acf
 
     return(
       <div>

@@ -12,24 +12,16 @@ app.use(express.json());
 
 const stocksRouter = require('./routes/stocksRouter');
 const usersRouter = require('./routes/userRouter');
+const pastStockRouter = require('./routes/pastStocksRouter');
 
 //WEBPACK BUILD
 app.use('/build', express.static(path.join(__dirname, '../build')));
 
-<<<<<<< HEAD
-// api will be our homepage and we will run middlewater funcs in api router
-app.use('/user', userRouter)
-app.use('/pastStock', pastStockRouter)
-// api/user will be /user
-// app.use('/api/user', userRouter)
-// app.use('/api/current', currentRouter );
-//catches all routes for any requests for unknown route
-=======
->>>>>>> e1498e6e5715881fc1b057a7b13ae1dd5ce45acf
 
 // ROUTE HANDLING
-app.use('/users', usersRouter);
+app.use('/user', usersRouter);
 app.use('/stocks', stocksRouter);
+app.use('/pastStock', pastStockRouter)
 // app.use('/api', apiRouter);
 
 //MAIN PAGE
