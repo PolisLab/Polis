@@ -7,7 +7,7 @@ const SearchBar = (props)=>{
     
 
 
-      <label>Search Companies</label>
+      <label>Search Companies:     </label>
 
       <input type="text" value={props.name} onChange={props.nameChangeHandler} required></input>
       </form>);
