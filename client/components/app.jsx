@@ -88,6 +88,7 @@ class App extends Component {
         alert('Your password does not match with our data!');
       }
       else{
+        alert("welcome!");
         console.log(body);
         this.setState({
           favorites: body.favorites,
