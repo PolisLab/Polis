@@ -35,12 +35,12 @@ module.exports = {
   },
   devServer: {
     publicPath: '/build',
-    port: 8080
-    // proxy:{
-    //   '/':{
-    //     target: 'http://localhost:3000',
-    //     secure: false,
-    //   }
-    // }
+    port: 8080,
+    proxy:{
+      '/':{
+        target: 'http://localhost:3000',
+        secure: false,
+      }
+    }
   }
 };

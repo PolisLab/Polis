@@ -12,15 +12,15 @@ stocksController.getBuys = (req, res, next) => {
   });
 };
 
-stocksController.getFavs = (req, res, next) => {
-  const id = req.params.id;
-  User.favorites.find({ userID: id }, (err, favs) => {
-    if (err)
-      return next('Error in stocksController.getFavs: ' + JSON.stringify(err));
-    res.locals.favs = favs;
-    return next();
-  });
-};
+// stocksController.getFavs = (req, res, next) => {
+//   const id = req.params.id;
+//   User.favorites.find({ userID: id }, (err, favs) => {
+//     if (err)
+//       return next('Error in stocksController.getFavs: ' + JSON.stringify(err));
+//     res.locals.favs = favs;
+//     return next();
+//   });
+// };
 
 stocksController.addBuy = (req, res, next) => {
   const id = req.params.id;
@@ -50,18 +50,18 @@ stocksController.deleteBuy = (req, res, next) => {
   );
 };
 
-stocksController.addFav = (req, res, next) => {
-  const id = req.params.id;
-  User.favorites.create(
-    { userID: id, favorites: req.body.favorites },
-    (err, favs) => {
-      if (err)
-        return next('Error in stocksController.addFav: ' + JSON.stringify(err));
-      res.locals.favs = favs;
-      return next();
-    }
-  );
-};
+// stocksController.addFav = (req, res, next) => {
+//   const id = req.params.id;
+//   User.favorites.create(
+//     { userID: id, favorites: req.body.favorites },
+//     (err, favs) => {
+//       if (err)
+//         return next('Error in stocksController.addFav: ' + JSON.stringify(err));
+//       res.locals.favs = favs;
+//       return next();
+//     }
+//   );
+// };
 
 stocksController.deleteFav = (req, res, next) => {
   const id = req.params.id;
@@ -77,3 +77,6 @@ stocksController.deleteFav = (req, res, next) => {
     }
   );
 };
+
+
+
