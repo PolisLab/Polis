@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 // getting api router
 // const apiRouter = require('./routes/api');
 const userRouter = require('./routes/userRouter')
+const stockRouter = require('./routes/stocksRouter')
 
 
 app.use('/build', express.static(path.join(__dirname, '../build')));
@@ -17,6 +18,7 @@ app.use(express.json());
 
 // api will be our homepage and we will run middlewater funcs in api router
 app.use('/user', userRouter)
+app.use('/stocks', stockRouter)
 
 // api/user will be /user
 // app.use('/api/user', userRouter)

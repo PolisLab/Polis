@@ -1,9 +1,9 @@
-const models = require('../models/polisModel');
+const models = require('../models/polisModels');
 
 const stocksController = {};
 
 stocksController.getBuys = (req, res, next) => {
-  const { email_address } = req.body;
+  const email_address= req.params.email;
   models.Buy.find({ email_address }, (err, buys) => {
     if (err)
       return next('Error in stocksController.getBuys: ' + JSON.stringify(err));
@@ -12,21 +12,18 @@ stocksController.getBuys = (req, res, next) => {
   });
 };
 
-// stocksController.getFavs = (req, res, next) => {
-//   const id = req.params.id;
-//   User.favorites.find({ userID: id }, (err, favs) => {
-//     if (err)
-//       return next('Error in stocksController.getFavs: ' + JSON.stringify(err));
-//     res.locals.favs = favs;
-//     return next();
-//   });
-// };
-
 stocksController.addBuy = (req, res, next) => {
-  const { email_address, boughtStockID } = req.body;
-  models.Buy.create({ email_address, boughtStockID }, (err, buys) => {
+  console.log(req.body);
+  models.Buy.create({ 
+    email_address: req.body.email_address, 
+    boughtStockID: req.body.boughtStockID, 
+    date: req.body.date, 
+    purchasedPrice: req.body.purchasedPrice,
+    numberOfShares : req.body.numberOfShares
+  },(err, buys) => {
     if (err)
       return next('Error in stocksController.addBuy: ' + JSON.stringify(err));
+    console.log(buys);
     res.locals.buys = buys;
     return next();
   });
@@ -57,32 +54,5 @@ stocksController.savePastStocks = (req, res, next) => {
   //check if stocks already exist in db
 };
 
-// stocksController.addFav = (req, res, next) => {
-//   const id = req.params.id;
-//   User.favorites.create(
-//     { userID: id, favorites: req.body.favorites },
-//     (err, favs) => {
-//       if (err)
-//         return next('Error in stocksController.addFav: ' + JSON.stringify(err));
-//       res.locals.favs = favs;
-//       return next();
-//     }
-//   );
-// };
-
-// stocksController.deleteFav = (req, res, next) => {
-//   const id = req.params.id;
-//   Buy.remove(
-//     { userID: id, boughtStockID: req.body.boughtStockID },
-//     (err, favs) => {
-//       if (err)
-//         return next(
-//           'Error in stocksController.deleteFav: ' + JSON.stringify(err)
-//         );
-//       res.locals.favs = favs;
-//       return next();
-//     }
-//   );
-// };
 
 module.exports = stocksController;

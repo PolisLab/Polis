@@ -28,7 +28,6 @@ const StockInfoDisplay = (props) => {
     .catch(err => console.log(err));
     updateDate(e.target.value)
   }
-
   const handleBuy = () =>{
     if(!props.userName)
       alert("please sign in!")
@@ -41,13 +40,15 @@ const StockInfoDisplay = (props) => {
           body: JSON.stringify({
             email_address: props.userName, 
             boughtStockID: symbol,
-            time: boughtDate,
-            purchasePrice: stockPrice
+            date: boughtDate,
+            purchasedPrice: stockPrice,
+            numberOfShare: numberOfShare
           })
       })
       .catch(err => console.log(err));
     }
   }
+  console.log(props.userName);
   console.log(numberOfShare);
   console.log(boughtDate);
   return (

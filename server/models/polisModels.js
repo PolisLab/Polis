@@ -25,13 +25,11 @@ const userSchema = new Schema({
 const User = mongoose.model('user', userSchema);
 
 const buySchema = new Schema({
-    userId : {
-        type : Schema.Types.ObjectId, 
-        ref: 'user'
-    },
+    email_address : String,
     boughtStockId : String,
-    date : Date,
+    date : String,
     purchasedPrice : Number,
+    numberOfShares : Number,
     prediction: Number
 })
 
