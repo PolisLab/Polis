@@ -2,6 +2,10 @@ const express = require('express');
 const stocksController = require('../controllers/stocksController');
 const router = express.Router();
 
+router.get('/pastStocks', stocksController.savePastStocks, (req, res) => {
+  res.status(200).json(res.locals.pastStock);
+});
+
 router.get('/buys/:email',
   stocksController.getBuys,
   (req, res) => {

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Header from './header';
 import axios from 'axios';
 import SearchBar from './searchcomp'
@@ -6,10 +6,9 @@ import StockList from '../container/StockList.jsx'
 import StockPopUp from './StockPopup'
 import RenderList from './renderList.jsx'
 
-
-var dataPoints =[];
-class App extends Component{
-  constructor(props){
+var dataPoints = [];
+class App extends Component {
+  constructor(props) {
     super(props);
     this.state={
       enteredUsername:'',
@@ -64,7 +63,6 @@ class App extends Component{
       this.setState({whichTab: '1'});
   } 
   favsListChangeHandler(){
-
       this.setState({whichTab: '2'});
   }
   buysListChangeHandler(){
@@ -121,7 +119,7 @@ class App extends Component{
         {this.state.isPicked ? <StockPopUp userName= {this.state.email} symbol ={this.state.companySymbol} companyName={this.state.companyName} closePopup ={this.togglePopup}/> : null}
         {content}
       </div>
-    )
+    );
   }
 }
 export default App;

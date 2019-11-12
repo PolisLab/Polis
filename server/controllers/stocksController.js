@@ -1,4 +1,5 @@
 const models = require('../models/polisModels');
+const fetch = require('node-fetch');
 
 const stocksController = {};
 
@@ -48,11 +49,37 @@ stocksController.savePastStocks = (req, res, next) => {
   )
     .then(result => result.json())
     .then(result => {
-      console.log(result);
-    });
+      // console.log(result['Time Series (Daily)']);
+      const resultSymbol = result['Meta Data']['2. Symbol'];
+      const price = result['Time Series (Daily)']['4. close'];
+      const finalResult = [];
+      for (let key in result['Time Series (Daily)']) {
+        let innerObj = {};
+        innerObj[key] = result['Time Series (Daily)'][key]['4. close'];
+
+        finalResult.push(innerObj);
+      }
+      // console.log(finalResult);
+      // let bigObj = {
+      //   symbol: resultSymbol,
+      //   changes: finalResult
+      // };
+      // // console.log(bigObj);
+      // const { symbol, changes } = bigObj;
+      models.PastStock.create({
+        stockSymbol: symbol,
+        changes: finalResult
+      }).then(result => {
+        console.log('this should be whats saved to db', result);
+        res.locals.pastStock = result;
+        next();
+      });
+    })
+    .catch(err => console.log(err));
   //build for in loop to pull out closing costs for each day
   //check if stocks already exist in db
 };
 
 
 module.exports = stocksController;
+
