@@ -56,6 +56,7 @@
     opacity: 1;
   }
 }
+
 body{
   background-color: #000000;
   background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
@@ -66,7 +67,7 @@ body{
   text-align: center;
 
 }
-.stockBox{
+#stockBox{
   display: flex;
   justify-content:center;
   justify-self: center;
@@ -79,7 +80,13 @@ body{
   margin: 5px;
 
 }
-
+.grow { 
+  transition: all .2s ease-in-out; 
+  }
+   
+  .grow:hover { 
+  transform: scale(1.1); 
+  }
 .closeButton{
   position: absolute;
   right: 10px;
@@ -106,8 +113,7 @@ body{
   left: 10%;  
   right: 10%;  
   top: 20%;  
-  bottom: 20%;  
-  margin: auto;  
+  bottom: 20%;    
   border-radius: 20px;  
   background-color: #000000;
   background-image: linear-gradient(315deg, #000000 0%, #5e5368 74%);
@@ -120,8 +126,8 @@ body{
 
 #stockBuyInfo{
   width: 48%;
-  position: relative;
-  right: -80px;
+  position: absolute;
+  right: 0px;
   font-family: Futura, "Trebuchet MS", Arial, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px;
 }
 
@@ -130,3 +136,5 @@ body{
   -webkit-animation: focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   animation: focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
+
+
