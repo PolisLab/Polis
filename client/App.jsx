@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Header from './header';
+import Header from './components/header';
 import axios from 'axios';
-import SearchBar from './searchcomp'
-import StockList from '../container/StockList.jsx'
-import StockPopUp from './StockPopup'
-import RenderList from './renderList.jsx'
+import SearchBar from './components/searchcomp'
+import StockList from './container/StockList.jsx'
+import StockPopUp from './components/StockPopup'
+import RenderList from './components/renderList.jsx'
 
 var dataPoints = [];
 class App extends Component {
