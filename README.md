@@ -1,2 +1,2 @@
-# Polis
-Real Time Stock Simulator!
+# Stockle
+Stock Trading Game!
